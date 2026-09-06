@@ -25,6 +25,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import id.identitylab.wallet.ui.theme.Blue500
+import id.identitylab.wallet.ui.theme.SurfaceWhite
 
 /**
  * A press-scaled action button mirroring the VC Wallet `AnimatedButton`.
@@ -34,8 +36,8 @@ fun AppButton(
     text: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
-    backgroundColor: Color = Color(0xFF2563EB),
-    contentColor: Color = Color.White,
+    backgroundColor: Color = Blue500,
+    contentColor: Color = SurfaceWhite,
     cornerRadius: Dp = 16.dp,
     enabled: Boolean = true,
     loading: Boolean = false,

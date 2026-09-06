@@ -17,6 +17,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import id.identitylab.wallet.ui.theme.DangerText
+import id.identitylab.wallet.ui.theme.SuccessText
+import id.identitylab.wallet.ui.theme.SurfaceWhite
+import id.identitylab.wallet.ui.theme.TextPrimary
 
 /**
  * A slim toast bar mirroring the VC Wallet `AppToast`. Visual-only: hides
@@ -31,9 +35,9 @@ fun AppToast(
     modifier: Modifier = Modifier,
 ) {
     val background = when (type) {
-        "success" -> Color(0xFF166534)
-        "error" -> Color(0xFF991B1B)
-        else -> Color(0xFF111827)
+        "success" -> SuccessText
+        "error" -> DangerText
+        else -> TextPrimary
     }
 
     LaunchedEffect(visible, message) {
@@ -56,7 +60,7 @@ fun AppToast(
         ) {
             Text(
                 text = message,
-                color = Color.White,
+                color = SurfaceWhite,
                 fontSize = 13.sp,
                 fontWeight = FontWeight.Bold,
             )

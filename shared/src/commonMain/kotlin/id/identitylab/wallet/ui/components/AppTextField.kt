@@ -28,6 +28,10 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import id.identitylab.wallet.ui.theme.BorderSubtle
+import id.identitylab.wallet.ui.theme.Canvas
+import id.identitylab.wallet.ui.theme.Placeholder
+import id.identitylab.wallet.ui.theme.TextPrimary
 
 /**
  * A labeled text field with an optional leading icon, matching the VC Wallet
@@ -52,15 +56,15 @@ fun AppTextField(
             text = label,
             fontSize = 13.sp,
             fontWeight = FontWeight.Black,
-            color = Color(0xFF111827),
+            color = TextPrimary,
             modifier = Modifier.padding(bottom = 8.dp),
         )
 
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(Color(0xFFF8FAFC), RoundedCornerShape(16.dp))
-                .border(1.dp, Color(0xFFE5E7EB), RoundedCornerShape(16.dp))
+                .background(Canvas, RoundedCornerShape(16.dp))
+                .border(1.dp, BorderSubtle, RoundedCornerShape(16.dp))
                 .padding(horizontal = 14.dp)
                 .height(
                     if (singleLine) {
@@ -83,7 +87,7 @@ fun AppTextField(
                 textStyle = TextStyle(
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold,
-                    color = Color(0xFF111827),
+                    color = TextPrimary,
                     textAlign = textAlign,
                     letterSpacing = letterSpacing,
                 ),
@@ -98,7 +102,7 @@ fun AppTextField(
                     if (value.isEmpty()) {
                         Text(
                             text = placeholder,
-                            color = Color(0xFF9CA3AF),
+                            color = Placeholder,
                             fontSize = 14.sp,
                             fontWeight = FontWeight.Bold,
                         )

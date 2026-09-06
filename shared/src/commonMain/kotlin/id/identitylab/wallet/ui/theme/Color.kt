@@ -25,6 +25,7 @@ val BorderSubtle = Color(0xFFE5E7EB)
 val BorderLight = Color(0xFFF1F5F9)
 val Placeholder = Color(0xFF9CA3AF)
 val Slate = Color(0xFF94A3B8)
+val SkeletonBase = Color(0xFFCBD5E1)
 
 // Status / semantic colors.
 val SuccessBg = Color(0xFFDCFCE7)

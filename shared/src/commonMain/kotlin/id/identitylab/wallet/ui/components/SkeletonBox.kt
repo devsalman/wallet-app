@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import id.identitylab.wallet.ui.theme.SkeletonBase
 
 /**
  * A pulsing placeholder mirroring the VC Wallet `SkeletonBox`.
@@ -43,7 +44,7 @@ fun SkeletonBox(
             .width(width)
             .height(height)
             .background(
-                Color(0xFFCBD5E1).copy(alpha = alpha),
+                SkeletonBase.copy(alpha = alpha),
                 RoundedCornerShape(borderRadius),
             ),
     )

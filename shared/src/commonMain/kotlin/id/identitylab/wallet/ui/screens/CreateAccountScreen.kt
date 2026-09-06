@@ -44,6 +44,18 @@ import androidx.compose.ui.unit.sp
 import id.identitylab.wallet.ui.components.AppButton
 import id.identitylab.wallet.ui.components.AppTextField
 import id.identitylab.wallet.ui.components.AppToast
+import id.identitylab.wallet.ui.theme.Blue500
+import id.identitylab.wallet.ui.theme.BorderSubtle
+import id.identitylab.wallet.ui.theme.Canvas
+import id.identitylab.wallet.ui.theme.LightBlue100
+import id.identitylab.wallet.ui.theme.Orange500
+import id.identitylab.wallet.ui.theme.Placeholder
+import id.identitylab.wallet.ui.theme.SurfaceWhite
+import id.identitylab.wallet.ui.theme.TextPrimary
+import id.identitylab.wallet.ui.theme.TextSecondary
+import id.identitylab.wallet.ui.theme.WarnBg
+import id.identitylab.wallet.ui.theme.WarnBorder
+import id.identitylab.wallet.ui.theme.WarnText
 
 /**
  * Create DID account screen ported from `app/auth/create-account.tsx`.
@@ -79,7 +91,7 @@ fun CreateAccountScreen(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Color(0xFFF8FAFC))
+                .background(Canvas)
                 .verticalScroll(rememberScrollState())
                 .padding(20.dp)
                 .padding(top = 54.dp, bottom = 40.dp),
@@ -92,20 +104,20 @@ fun CreateAccountScreen(
                 Box(
                     modifier = Modifier
                         .size(72.dp)
-                        .background(Color(0xFFDBEAFE), RoundedCornerShape(36.dp)),
+                        .background(LightBlue100, RoundedCornerShape(36.dp)),
                     contentAlignment = Alignment.Center,
                 ) {
                     Icon(
                         imageVector = Icons.Filled.PersonAdd,
                         contentDescription = null,
-                        tint = Color(0xFF2563EB),
+                        tint = Blue500,
                         modifier = Modifier.size(34.dp),
                     )
                 }
                 Spacer(modifier = Modifier.height(14.dp))
                 Text(
                     text = "Buat Akun Wallet",
-                    color = Color(0xFF111827),
+                    color = TextPrimary,
                     fontSize = 28.sp,
                     fontWeight = FontWeight.Black,
                     textAlign = TextAlign.Center,
@@ -113,7 +125,7 @@ fun CreateAccountScreen(
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
                     text = "Lengkapi data akun. DID dan recovery phrase akan otomatis dibuat saat akun berhasil disimpan.",
-                    color = Color(0xFF64748B),
+                    color = TextSecondary,
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold,
                     textAlign = TextAlign.Center,
@@ -127,8 +139,8 @@ fun CreateAccountScreen(
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(Color.White, RoundedCornerShape(26.dp))
-                    .border(1.dp, Color(0xFFE5E7EB), RoundedCornerShape(26.dp))
+                    .background(SurfaceWhite, RoundedCornerShape(26.dp))
+                    .border(1.dp, BorderSubtle, RoundedCornerShape(26.dp))
                     .padding(20.dp),
             ) {
                 AppTextField(
@@ -141,7 +153,7 @@ fun CreateAccountScreen(
                         Icon(
                             imageVector = Icons.Filled.PersonOutline,
                             contentDescription = null,
-                            tint = Color(0xFF64748B),
+                            tint = TextSecondary,
                             modifier = Modifier.size(20.dp),
                         )
                     },
@@ -153,7 +165,7 @@ fun CreateAccountScreen(
                     text = "Tanggal Lahir",
                     fontSize = 13.sp,
                     fontWeight = FontWeight.Black,
-                    color = Color(0xFF111827),
+                    color = TextPrimary,
                     modifier = Modifier.padding(bottom = 8.dp),
                 )
 
@@ -161,8 +173,8 @@ fun CreateAccountScreen(
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .background(Color(0xFFF8FAFC), RoundedCornerShape(16.dp))
-                        .border(1.dp, Color(0xFFE5E7EB), RoundedCornerShape(16.dp))
+                        .background(Canvas, RoundedCornerShape(16.dp))
+                        .border(1.dp, BorderSubtle, RoundedCornerShape(16.dp))
                         .clickable {
                             setDate("01 Januari 2000")
                         }
@@ -173,16 +185,16 @@ fun CreateAccountScreen(
                     Icon(
                         imageVector = Icons.Filled.CalendarMonth,
                         contentDescription = null,
-                        tint = Color(0xFF64748B),
+                        tint = TextSecondary,
                         modifier = Modifier.size(20.dp),
                     )
                     Spacer(modifier = Modifier.width(10.dp))
                     Text(
                         text = dateResult.ifEmpty { "Pilih tanggal lahir" },
                         color = if (dateResult.isEmpty()) {
-                            Color(0xFF9CA3AF)
+                            Placeholder
                         } else {
-                            Color(0xFF111827)
+                            TextPrimary
                         },
                         fontSize = 14.sp,
                         fontWeight = FontWeight.Bold,
@@ -201,7 +213,7 @@ fun CreateAccountScreen(
                         Icon(
                             imageVector = Icons.Filled.MailOutline,
                             contentDescription = null,
-                            tint = Color(0xFF64748B),
+                            tint = TextSecondary,
                             modifier = Modifier.size(20.dp),
                         )
                     },
@@ -221,7 +233,7 @@ fun CreateAccountScreen(
                         Icon(
                             imageVector = Icons.Filled.Call,
                             contentDescription = null,
-                            tint = Color(0xFF64748B),
+                            tint = TextSecondary,
                             modifier = Modifier.size(20.dp),
                         )
                     },
@@ -240,7 +252,7 @@ fun CreateAccountScreen(
                         Icon(
                             imageVector = Icons.Filled.LocationOn,
                             contentDescription = null,
-                            tint = Color(0xFF64748B),
+                            tint = TextSecondary,
                             modifier = Modifier.size(20.dp),
                         )
                     },
@@ -274,12 +286,12 @@ fun CreateAccountScreen(
                         }
                     },
                     modifier = Modifier.fillMaxWidth(),
-                    backgroundColor = Color(0xFF2563EB),
+                    backgroundColor = Blue500,
                     startIcon = {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowForward,
                             contentDescription = null,
-                            tint = Color.White,
+                            tint = SurfaceWhite,
                             modifier = Modifier.size(20.dp),
                         )
                     },
@@ -292,20 +304,20 @@ fun CreateAccountScreen(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(Color(0xFFFFF7ED), RoundedCornerShape(20.dp))
-                    .border(1.dp, Color(0xFFFED7AA), RoundedCornerShape(20.dp))
+                    .background(WarnBg, RoundedCornerShape(20.dp))
+                    .border(1.dp, WarnBorder, RoundedCornerShape(20.dp))
                     .padding(16.dp),
                 verticalAlignment = Alignment.Top,
             ) {
                 Icon(
                     imageVector = Icons.Filled.Info,
                     contentDescription = null,
-                    tint = Color(0xFFF97316),
+                    tint = Orange500,
                     modifier = Modifier.size(22.dp),
                 )
                 Text(
                     text = "DID dibuat dari recovery phrase 12 kata. Simpan phrase tersebut agar wallet identity dapat dipulihkan di masa depan.",
-                    color = Color(0xFF9A3412),
+                    color = WarnText,
                     fontWeight = FontWeight.Bold,
                     fontSize = 13.sp,
                     lineHeight = 19.sp,

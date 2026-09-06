@@ -38,6 +38,17 @@ import androidx.compose.ui.unit.sp
 import id.identitylab.wallet.ui.components.AppButton
 import id.identitylab.wallet.ui.components.AppTextField
 import id.identitylab.wallet.ui.components.AppToast
+import id.identitylab.wallet.ui.theme.Blue500
+import id.identitylab.wallet.ui.theme.Blue700
+import id.identitylab.wallet.ui.theme.BorderSubtle
+import id.identitylab.wallet.ui.theme.Canvas
+import id.identitylab.wallet.ui.theme.LightBlue100
+import id.identitylab.wallet.ui.theme.LightBlue50
+import id.identitylab.wallet.ui.theme.Orange500
+import id.identitylab.wallet.ui.theme.SurfaceWhite
+import id.identitylab.wallet.ui.theme.WarnBg
+import id.identitylab.wallet.ui.theme.WarnBorder
+import id.identitylab.wallet.ui.theme.WarnText
 
 /**
  * Login / unlock screen ported from `app/auth/unlock.tsx`. Visual-only: PIN
@@ -57,7 +68,7 @@ fun UnlockScreen(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Color(0xFFF8FAFC))
+                .background(Canvas)
                 .padding(20.dp),
             verticalArrangement = Arrangement.Center,
         ) {
@@ -68,52 +79,54 @@ fun UnlockScreen(
                     .background(
                         Brush.linearGradient(
                             colors = listOf(
-                                Color(0xFF2563EB),
-                                Color(0xFF1D4ED8),
-                                Color(0xFFF97316),
+                                Blue500,
+                                Blue700,
+                                Orange500,
                             ),
                         ),
-                        RoundedCornerShape(30.dp),
+                        RoundedCornerShape(20.dp),
                     )
-                    .padding(26.dp),
+                    .padding(20.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 Box(
                     modifier = Modifier
                         .size(88.dp)
-                        .background(Color.White, RoundedCornerShape(44.dp)),
+                        .background(SurfaceWhite, RoundedCornerShape(44.dp)),
                     contentAlignment = Alignment.Center,
                 ) {
                     Icon(
                         imageVector = Icons.Filled.Lock,
                         contentDescription = "Lock",
-                        tint = Color(0xFF2563EB),
+                        tint = Blue500,
                         modifier = Modifier.size(40.dp),
                     )
                 }
                 Spacer(modifier = Modifier.height(18.dp))
                 Text(
                     text = "Unlock Wallet",
-                    color = Color.White,
+                    color = SurfaceWhite,
                     fontSize = 30.sp,
                     fontWeight = FontWeight.Black,
                 )
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
                     text = "Masukkan PIN atau gunakan biometrik untuk membuka VC Wallet.",
-                    color = Color(0xFFDBEAFE),
+                    color = LightBlue100,
                     fontSize = 14.sp,
                     textAlign = TextAlign.Center,
                     lineHeight = 21.sp,
                 )
             }
 
+            Spacer(modifier = Modifier.height(12.dp))
+
             // PIN card.
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(Color.White, RoundedCornerShape(26.dp))
-                    .border(1.dp, Color(0xFFE5E7EB), RoundedCornerShape(26.dp))
+                    .background(SurfaceWhite, RoundedCornerShape(26.dp))
+                    .border(1.dp, BorderSubtle, RoundedCornerShape(26.dp))
                     .padding(22.dp),
             ) {
                 AppTextField(
@@ -143,12 +156,12 @@ fun UnlockScreen(
                         }
                     },
                     modifier = Modifier.fillMaxWidth(),
-                    backgroundColor = Color(0xFF2563EB),
+                    backgroundColor = Blue500,
                     startIcon = {
                         Icon(
                             imageVector = Icons.Filled.Key,
                             contentDescription = null,
-                            tint = Color.White,
+                            tint = SurfaceWhite,
                             modifier = Modifier.size(20.dp),
                         )
                     },
@@ -160,7 +173,7 @@ fun UnlockScreen(
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .background(Color(0xFFEFF6FF), RoundedCornerShape(16.dp))
+                        .background(LightBlue50, RoundedCornerShape(16.dp))
                         .clickable {
                             toastMessage = "Biometrik belum diaktifkan pada wallet ini"
                             toastType = "error"
@@ -173,12 +186,12 @@ fun UnlockScreen(
                     Icon(
                         imageVector = Icons.Filled.Fingerprint,
                         contentDescription = null,
-                        tint = Color(0xFF2563EB),
+                        tint = Blue500,
                         modifier = Modifier.size(22.dp),
                     )
                     Text(
                         text = "Gunakan Biometrik",
-                        color = Color(0xFF2563EB),
+                        color = Blue500,
                         fontWeight = FontWeight.Black,
                         fontSize = 14.sp,
                         modifier = Modifier.padding(start = 8.dp),
@@ -186,24 +199,26 @@ fun UnlockScreen(
                 }
             }
 
+            Spacer(modifier = Modifier.height(12.dp))
+
             // Security note.
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(Color(0xFFFFF7ED), RoundedCornerShape(20.dp))
-                    .border(1.dp, Color(0xFFFED7AA), RoundedCornerShape(20.dp))
+                    .background(WarnBg, RoundedCornerShape(20.dp))
+                    .border(1.dp, WarnBorder, RoundedCornerShape(20.dp))
                     .padding(16.dp),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Icon(
                     imageVector = Icons.Filled.Shield,
                     contentDescription = null,
-                    tint = Color(0xFFF97316),
+                    tint = Orange500,
                     modifier = Modifier.size(22.dp),
                 )
                 Text(
                     text = "Wallet dilindungi dengan PIN lokal dan autentikasi biometrik.",
-                    color = Color(0xFF9A3412),
+                    color = WarnText,
                     fontWeight = FontWeight.Bold,
                     fontSize = 13.sp,
                     lineHeight = 19.sp,

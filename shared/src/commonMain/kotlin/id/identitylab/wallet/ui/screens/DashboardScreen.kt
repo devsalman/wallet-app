@@ -41,6 +41,25 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import id.identitylab.wallet.ui.components.AppToast
+import id.identitylab.wallet.ui.theme.Blue500
+import id.identitylab.wallet.ui.theme.BorderSubtle
+import id.identitylab.wallet.ui.theme.Canvas
+import id.identitylab.wallet.ui.theme.LightBlue100
+import id.identitylab.wallet.ui.theme.LightBlue50
+import id.identitylab.wallet.ui.theme.Orange500
+import id.identitylab.wallet.ui.theme.Overlay
+import id.identitylab.wallet.ui.theme.Placeholder
+import id.identitylab.wallet.ui.theme.SkeletonBase
+import id.identitylab.wallet.ui.theme.Slate
+import id.identitylab.wallet.ui.theme.SuccessBg
+import id.identitylab.wallet.ui.theme.SuccessText
+import id.identitylab.wallet.ui.theme.SurfaceWhite
+import id.identitylab.wallet.ui.theme.TextMuted
+import id.identitylab.wallet.ui.theme.TextPrimary
+import id.identitylab.wallet.ui.theme.TextSecondary
+import id.identitylab.wallet.ui.theme.WarnBg
+import id.identitylab.wallet.ui.theme.WarnBorder
+import id.identitylab.wallet.ui.theme.WarnText
 
 private const val SampleDid =
     "did:key:z6Mkk5vVc8nYq7F1gJ2mRwLmNpQWrTzXb3y4A6B9C0D"
@@ -64,7 +83,7 @@ fun DashboardScreen(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Color(0xFFF8FAFC))
+                .background(Canvas)
                 .verticalScroll(rememberScrollState())
                 .padding(20.dp)
                 .padding(top = 22.dp, bottom = 40.dp),
@@ -79,12 +98,12 @@ fun DashboardScreen(
                     Box(
                         modifier = Modifier
                             .size(52.dp)
-                            .background(Color(0xFF2563EB), RoundedCornerShape(26.dp)),
+                            .background(Blue500, RoundedCornerShape(26.dp)),
                         contentAlignment = Alignment.Center,
                     ) {
                         Text(
                             text = "B",
-                            color = Color.White,
+                            color = SurfaceWhite,
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Black,
                         )
@@ -94,13 +113,13 @@ fun DashboardScreen(
                         Text(
                             text = "Halo,",
                             fontSize = 13.sp,
-                            color = Color(0xFF64748B),
+                            color = TextSecondary,
                             fontWeight = FontWeight.Bold,
                         )
                         Text(
                             text = "Budi Santoso",
                             fontSize = 18.sp,
-                            color = Color(0xFF111827),
+                            color = TextPrimary,
                             fontWeight = FontWeight.Black,
                         )
                     }
@@ -110,14 +129,14 @@ fun DashboardScreen(
                 Box(
                     modifier = Modifier
                         .size(48.dp)
-                        .background(Color.White, RoundedCornerShape(24.dp))
-                        .border(1.dp, Color(0xFFE5E7EB), RoundedCornerShape(24.dp)),
+                        .background(SurfaceWhite, RoundedCornerShape(24.dp))
+                        .border(1.dp, BorderSubtle, RoundedCornerShape(24.dp)),
                     contentAlignment = Alignment.Center,
                 ) {
                     Icon(
                         imageVector = Icons.Filled.Notifications,
                         contentDescription = "Notifications",
-                        tint = Color(0xFF111827),
+                        tint = TextPrimary,
                         modifier = Modifier.size(24.dp),
                     )
                     Box(
@@ -125,7 +144,7 @@ fun DashboardScreen(
                             .align(Alignment.TopEnd)
                             .padding(top = 11.dp, end = 12.dp)
                             .size(8.dp)
-                            .background(Color(0xFFF97316), RoundedCornerShape(4.dp)),
+                            .background(Orange500, RoundedCornerShape(4.dp)),
                     )
                 }
             }
@@ -136,21 +155,21 @@ fun DashboardScreen(
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(Color.White, RoundedCornerShape(26.dp))
-                    .border(1.dp, Color(0xFFDBEAFE), RoundedCornerShape(26.dp))
+                    .background(SurfaceWhite, RoundedCornerShape(26.dp))
+                    .border(1.dp, LightBlue100, RoundedCornerShape(26.dp))
                     .padding(20.dp),
             ) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Box(
                         modifier = Modifier
                             .size(52.dp)
-                            .background(Color(0xFFDBEAFE), RoundedCornerShape(26.dp)),
+                            .background(LightBlue100, RoundedCornerShape(26.dp)),
                         contentAlignment = Alignment.Center,
                     ) {
                         Icon(
                             imageVector = Icons.Filled.Fingerprint,
                             contentDescription = null,
-                            tint = Color(0xFF2563EB),
+                            tint = Blue500,
                             modifier = Modifier.size(28.dp),
                         )
                     }
@@ -159,24 +178,24 @@ fun DashboardScreen(
                         Text(
                             text = "Decentralized Identifier",
                             fontSize = 13.sp,
-                            color = Color(0xFF6B7280),
+                            color = TextMuted,
                             fontWeight = FontWeight.Bold,
                         )
                         Text(
                             text = "Active DID",
                             fontSize = 19.sp,
-                            color = Color(0xFF111827),
+                            color = TextPrimary,
                             fontWeight = FontWeight.Black,
                         )
                     }
                     Box(
                         modifier = Modifier
-                            .background(Color(0xFFDCFCE7), RoundedCornerShape(999.dp))
+                            .background(SuccessBg, RoundedCornerShape(999.dp))
                             .padding(horizontal = 10.dp, vertical = 6.dp),
                     ) {
                         Text(
                             text = "ACTIVE",
-                            color = Color(0xFF166534),
+                            color = SuccessText,
                             fontSize = 11.sp,
                             fontWeight = FontWeight.Black,
                         )
@@ -188,14 +207,14 @@ fun DashboardScreen(
                 Text(
                     text = "DID Address",
                     fontSize = 13.sp,
-                    color = Color(0xFF6B7280),
+                    color = TextMuted,
                     fontWeight = FontWeight.ExtraBold,
                 )
                 Spacer(modifier = Modifier.height(6.dp))
                 Text(
                     text = SampleDid,
                     fontSize = 13.sp,
-                    color = Color(0xFF2563EB),
+                    color = Blue500,
                     fontWeight = FontWeight.SemiBold,
                     lineHeight = 20.sp,
                 )
@@ -207,7 +226,7 @@ fun DashboardScreen(
                     Row(
                         modifier = Modifier
                             .weight(1f)
-                            .background(Color(0xFFEFF6FF), RoundedCornerShape(12.dp))
+                            .background(LightBlue50, RoundedCornerShape(12.dp))
                             .clickable {
                                 toastMessage = "DID Address berhasil disalin"
                                 toastType = "success"
@@ -220,12 +239,12 @@ fun DashboardScreen(
                         Icon(
                             imageVector = Icons.Filled.ContentCopy,
                             contentDescription = null,
-                            tint = Color(0xFF2563EB),
+                            tint = Blue500,
                             modifier = Modifier.size(16.dp),
                         )
                         Text(
                             text = "Copy DID",
-                            color = Color(0xFF2563EB),
+                            color = Blue500,
                             fontWeight = FontWeight.Black,
                             fontSize = 13.sp,
                             modifier = Modifier.padding(start = 6.dp),
@@ -236,7 +255,7 @@ fun DashboardScreen(
                     Row(
                         modifier = Modifier
                             .weight(1f)
-                            .background(Color(0xFFF97316), RoundedCornerShape(12.dp))
+                            .background(Orange500, RoundedCornerShape(12.dp))
                             .clickable { showDIDQR = true }
                             .padding(vertical = 10.dp),
                         horizontalArrangement = Arrangement.Center,
@@ -245,12 +264,12 @@ fun DashboardScreen(
                         Icon(
                             imageVector = Icons.Filled.QrCode,
                             contentDescription = null,
-                            tint = Color.White,
+                            tint = SurfaceWhite,
                             modifier = Modifier.size(16.dp),
                         )
                         Text(
                             text = "Generate QR",
-                            color = Color.White,
+                            color = SurfaceWhite,
                             fontWeight = FontWeight.Black,
                             fontSize = 13.sp,
                             modifier = Modifier.padding(start = 6.dp),
@@ -265,8 +284,8 @@ fun DashboardScreen(
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(Color.White, RoundedCornerShape(24.dp))
-                    .border(1.dp, Color(0xFFE5E7EB), RoundedCornerShape(24.dp))
+                    .background(SurfaceWhite, RoundedCornerShape(24.dp))
+                    .border(1.dp, BorderSubtle, RoundedCornerShape(24.dp))
                     .padding(18.dp),
             ) {
                 Row(
@@ -278,11 +297,11 @@ fun DashboardScreen(
                         text = "My VC Documents",
                         fontSize = 18.sp,
                         fontWeight = FontWeight.Black,
-                        color = Color(0xFF111827),
+                        color = TextPrimary,
                     )
                     Text(
                         text = "View Wallet",
-                        color = Color(0xFF2563EB),
+                        color = Blue500,
                         fontWeight = FontWeight.Black,
                         fontSize = 13.sp,
                         modifier = Modifier.clickable { onOpenCreateDID() },
@@ -309,20 +328,20 @@ fun DashboardScreen(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(Color(0xFF2563EB), RoundedCornerShape(24.dp))
+                    .background(Blue500, RoundedCornerShape(24.dp))
                     .padding(18.dp),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Box(
                     modifier = Modifier
                         .size(54.dp)
-                        .background(Color(0xFFF97316), RoundedCornerShape(27.dp)),
+                        .background(Orange500, RoundedCornerShape(27.dp)),
                     contentAlignment = Alignment.Center,
                 ) {
                     Icon(
                         imageVector = Icons.Filled.QrCodeScanner,
                         contentDescription = null,
-                        tint = Color.White,
+                        tint = SurfaceWhite,
                         modifier = Modifier.size(26.dp),
                     )
                 }
@@ -330,13 +349,13 @@ fun DashboardScreen(
                 Column(modifier = Modifier.weight(1f)) {
                     Text(
                         text = "Scan Verification Request",
-                        color = Color.White,
+                        color = SurfaceWhite,
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Black,
                     )
                     Text(
                         text = "Pindai QR dari verifikator untuk merespons permintaan verifikasi.",
-                        color = Color(0xFFDBEAFE),
+                        color = LightBlue100,
                         fontSize = 12.sp,
                         lineHeight = 18.sp,
                         fontWeight = FontWeight.SemiBold,
@@ -345,7 +364,7 @@ fun DashboardScreen(
                 Icon(
                     imageVector = Icons.Filled.ChevronRight,
                     contentDescription = null,
-                    tint = Color.White,
+                    tint = SurfaceWhite,
                     modifier = Modifier.size(22.dp),
                 )
             }
@@ -356,20 +375,20 @@ fun DashboardScreen(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(Color(0xFFFFF7ED), RoundedCornerShape(18.dp))
-                    .border(1.dp, Color(0xFFFED7AA), RoundedCornerShape(18.dp))
+                    .background(WarnBg, RoundedCornerShape(18.dp))
+                    .border(1.dp, WarnBorder, RoundedCornerShape(18.dp))
                     .padding(16.dp),
                 verticalAlignment = Alignment.Top,
             ) {
                 Icon(
                     imageVector = Icons.Filled.Lock,
                     contentDescription = null,
-                    tint = Color(0xFFF97316),
+                    tint = Orange500,
                     modifier = Modifier.size(22.dp),
                 )
                 Text(
                     text = "Wallet dilindungi dengan secure storage, PIN lokal, dan biometrik. Credential disimpan sebagai Verifiable Credential Data Model v2.0.",
-                    color = Color(0xFF9A3412),
+                    color = WarnText,
                     fontWeight = FontWeight.Bold,
                     fontSize = 13.sp,
                     lineHeight = 20.sp,
@@ -383,7 +402,7 @@ fun DashboardScreen(
             Box(
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(Color(0x8C0F172A))
+                    .background(Overlay)
                     .clickable { showDIDQR = false },
                 contentAlignment = Alignment.Center,
             ) {
@@ -391,7 +410,7 @@ fun DashboardScreen(
                     modifier = Modifier
                         .padding(24.dp)
                         .fillMaxWidth()
-                        .background(Color.White, RoundedCornerShape(26.dp))
+                        .background(SurfaceWhite, RoundedCornerShape(26.dp))
                         .clickable(enabled = false) { }
                         .padding(22.dp),
                     horizontalAlignment = Alignment.CenterHorizontally,
@@ -399,13 +418,13 @@ fun DashboardScreen(
                     Box(
                         modifier = Modifier
                             .size(64.dp)
-                            .background(Color(0xFFEFF6FF), RoundedCornerShape(32.dp)),
+                            .background(LightBlue50, RoundedCornerShape(32.dp)),
                         contentAlignment = Alignment.Center,
                     ) {
                         Icon(
                             imageVector = Icons.Filled.QrCode,
                             contentDescription = null,
-                            tint = Color(0xFF2563EB),
+                            tint = Blue500,
                             modifier = Modifier.size(34.dp),
                         )
                     }
@@ -413,13 +432,13 @@ fun DashboardScreen(
                     Text(
                         text = "DID QR Code",
                         fontSize = 20.sp,
-                        color = Color(0xFF111827),
+                        color = TextPrimary,
                         fontWeight = FontWeight.Black,
                     )
                     Spacer(modifier = Modifier.height(6.dp))
                     Text(
                         text = "QR ini berisi DID Address wallet kamu.",
-                        color = Color(0xFF64748B),
+                        color = TextSecondary,
                         fontSize = 13.sp,
                         fontWeight = FontWeight.SemiBold,
                         textAlign = TextAlign.Center,
@@ -430,12 +449,12 @@ fun DashboardScreen(
                     Box(
                         modifier = Modifier
                             .size(220.dp)
-                            .background(Color(0xFFF8FAFC), RoundedCornerShape(18.dp)),
+                            .background(Canvas, RoundedCornerShape(18.dp)),
                         contentAlignment = Alignment.Center,
                     ) {
                         Text(
                             text = SampleDid,
-                            color = Color(0xFF2563EB),
+                            color = Blue500,
                             fontSize = 11.sp,
                             fontWeight = FontWeight.Bold,
                             textAlign = TextAlign.Center,
@@ -447,14 +466,14 @@ fun DashboardScreen(
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .background(Color(0xFF2563EB), RoundedCornerShape(14.dp))
+                            .background(Blue500, RoundedCornerShape(14.dp))
                             .clickable { showDIDQR = false }
                             .padding(vertical = 13.dp),
                         horizontalArrangement = Arrangement.Center,
                     ) {
                         Text(
                             text = "Tutup",
-                            color = Color.White,
+                            color = SurfaceWhite,
                             fontSize = 14.sp,
                             fontWeight = FontWeight.Black,
                         )
@@ -485,8 +504,8 @@ private fun CredentialRow(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .background(Color.White, RoundedCornerShape(20.dp))
-            .border(1.dp, Color(0xFFE5E7EB), RoundedCornerShape(20.dp))
+            .background(SurfaceWhite, RoundedCornerShape(20.dp))
+            .border(1.dp, BorderSubtle, RoundedCornerShape(20.dp))
             .padding(18.dp),
     ) {
         Row(
@@ -501,13 +520,13 @@ private fun CredentialRow(
                 Box(
                     modifier = Modifier
                         .size(50.dp)
-                        .background(Color(0xFFEFF6FF), RoundedCornerShape(16.dp))
-                        .border(1.dp, Color(0xFFDBEAFE), RoundedCornerShape(16.dp)),
+                        .background(LightBlue50, RoundedCornerShape(16.dp))
+                        .border(1.dp, LightBlue100, RoundedCornerShape(16.dp)),
                     contentAlignment = Alignment.Center,
                 ) {
                     Text(
                         text = "ID",
-                        color = Color(0xFF2563EB),
+                        color = Blue500,
                         fontSize = 14.sp,
                         fontWeight = FontWeight.Black,
                     )
@@ -518,13 +537,13 @@ private fun CredentialRow(
                         text = title,
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Black,
-                        color = Color(0xFF111827),
+                        color = TextPrimary,
                         lineHeight = 21.sp,
                     )
                     Text(
                         text = issuer.uppercase(),
                         fontSize = 10.sp,
-                        color = Color(0xFF64748B),
+                        color = TextSecondary,
                         fontWeight = FontWeight.Bold,
                         letterSpacing = 1.3.sp,
                     )
@@ -535,18 +554,18 @@ private fun CredentialRow(
                 modifier = Modifier
                     .background(
                         if (valid) {
-                            Color(0xFFDCFCE7)
+                            SuccessBg
                         } else {
-                            Color(0xFFF8FAFC)
+                            Canvas
                         },
                         RoundedCornerShape(7.dp),
                     )
                     .border(
                         1.dp,
                         if (valid) {
-                            Color(0xFF166534)
+                            SuccessText
                         } else {
-                            Color(0xFFCBD5E1)
+                            SkeletonBase
                         },
                         RoundedCornerShape(7.dp),
                     )
@@ -555,9 +574,9 @@ private fun CredentialRow(
                 Text(
                     text = label,
                     color = if (valid) {
-                        Color(0xFF166534)
+                        SuccessText
                     } else {
-                        Color(0xFF64748B)
+                        TextSecondary
                     },
                     fontSize = 9.sp,
                     fontWeight = FontWeight.Black,
@@ -571,7 +590,7 @@ private fun CredentialRow(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(1.dp)
-                .background(Color(0xFFE5E7EB)),
+                .background(BorderSubtle),
         )
 
         Row(
@@ -583,14 +602,14 @@ private fun CredentialRow(
         ) {
             Text(
                 text = "Klik untuk melihat detail credential",
-                color = Color(0xFF64748B),
+                color = TextSecondary,
                 fontSize = 12.sp,
                 fontWeight = FontWeight.Bold,
             )
             Icon(
                 imageVector = Icons.Filled.ChevronRight,
                 contentDescription = null,
-                tint = Color(0xFF94A3B8),
+                tint = Slate,
                 modifier = Modifier.size(16.dp),
             )
         }
@@ -602,26 +621,26 @@ private fun EmptyCredentialCard() {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .background(Color(0xFFF8FAFC), RoundedCornerShape(18.dp))
+            .background(Canvas, RoundedCornerShape(18.dp))
             .padding(22.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Icon(
             imageVector = Icons.Filled.Wallet,
             contentDescription = null,
-            tint = Color(0xFF9CA3AF),
+            tint = Placeholder,
             modifier = Modifier.size(34.dp),
         )
         Spacer(modifier = Modifier.height(10.dp))
         Text(
             text = "Belum Ada VC",
             fontSize = 18.sp,
-            color = Color(0xFF111827),
+            color = TextPrimary,
             fontWeight = FontWeight.Black,
         )
         Text(
             text = "Buat credential dari halaman Wallet untuk menambahkan credential ke dashboard.",
-            color = Color(0xFF6B7280),
+            color = TextMuted,
             fontWeight = FontWeight.Bold,
             textAlign = TextAlign.Center,
             lineHeight = 20.sp,
