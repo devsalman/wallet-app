@@ -19,6 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import id.identitylab.wallet.ui.theme.Blue500
+import id.identitylab.wallet.ui.theme.Canvas
 import id.identitylab.wallet.ui.theme.LightBlue50
 import id.identitylab.wallet.ui.theme.SurfaceWhite
 import id.identitylab.wallet.ui.theme.TextPrimary
@@ -39,7 +40,7 @@ fun SplashScreen(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(SurfaceWhite),
+            .background(Canvas),
         contentAlignment = Alignment.Center,
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {

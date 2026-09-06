@@ -43,6 +43,7 @@ kotlin {
         androidMain.dependencies {
             implementation(libs.compose.uiToolingPreview)
             implementation(libs.compose.uiTooling)
+            implementation(libs.cryptography.provider.jdk)
         }
         commonMain.dependencies {
             implementation(libs.compose.runtime)
@@ -54,12 +55,21 @@ kotlin {
             implementation(libs.compose.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
+            implementation(libs.cryptography.core)
+            implementation(libs.kotlinx.serialization.json)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
+            implementation(libs.kotlinx.coroutines.test)
         }
         jsMain.dependencies {
             implementation(libs.wrappers.browser)
+            implementation(libs.cryptography.provider.webcrypto)
+        }
+        wasmJsMain {
+            dependencies {
+                implementation(libs.cryptography.provider.webcrypto)
+            }
         }
     }
 }
