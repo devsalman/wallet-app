@@ -39,6 +39,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import id.identitylab.wallet.ui.components.AppButton
@@ -48,6 +49,7 @@ import id.identitylab.wallet.ui.theme.Blue500
 import id.identitylab.wallet.ui.theme.BorderSubtle
 import id.identitylab.wallet.ui.theme.Canvas
 import id.identitylab.wallet.ui.theme.LightBlue100
+import id.identitylab.wallet.ui.theme.NufidTheme
 import id.identitylab.wallet.ui.theme.Orange500
 import id.identitylab.wallet.ui.theme.Placeholder
 import id.identitylab.wallet.ui.theme.SurfaceWhite
@@ -344,4 +346,12 @@ private fun isValidEmail(email: String): Boolean {
 
 private fun isValidPhoneNumber(phone: String): Boolean {
     return Regex("^08[0-9]{8,13}\$").matches(phone)
+}
+
+@Composable
+@Preview
+fun CreateAccountScreenPreview() {
+    NufidTheme {
+        CreateAccountScreen(onCreated = {})
+    }
 }

@@ -38,6 +38,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import id.identitylab.wallet.ui.components.AppToast
@@ -46,6 +47,7 @@ import id.identitylab.wallet.ui.theme.BorderSubtle
 import id.identitylab.wallet.ui.theme.Canvas
 import id.identitylab.wallet.ui.theme.LightBlue100
 import id.identitylab.wallet.ui.theme.LightBlue50
+import id.identitylab.wallet.ui.theme.NufidTheme
 import id.identitylab.wallet.ui.theme.Orange500
 import id.identitylab.wallet.ui.theme.Overlay
 import id.identitylab.wallet.ui.theme.Placeholder
@@ -646,5 +648,13 @@ private fun EmptyCredentialCard() {
             lineHeight = 20.sp,
             modifier = Modifier.padding(top = 8.dp),
         )
+    }
+}
+
+@Preview
+@Composable
+fun DashboardScreenPreview() {
+    NufidTheme {
+        DashboardScreen( onOpenCreateDID = {})
     }
 }

@@ -7,10 +7,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import id.identitylab.wallet.ui.screens.CreateAccountScreen
 import id.identitylab.wallet.ui.screens.DashboardScreen
+import id.identitylab.wallet.ui.screens.SplashScreen
 import id.identitylab.wallet.ui.screens.UnlockScreen
 import id.identitylab.wallet.ui.theme.NufidTheme
 
 internal enum class AppScreen {
+    Splash,
     Unlock,
     CreateAccount,
     Dashboard,
@@ -18,14 +20,20 @@ internal enum class AppScreen {
 
 /**
  * Root of the VC Wallet UI port. Uses simple state-based navigation between
- * the login (unlock), create-DID-account, and dashboard screens.
+ * the splash, login (unlock), create-DID-account, and dashboard screens.
  */
 @Composable
 fun App() {
     NufidTheme {
-        var screen by remember { mutableStateOf(AppScreen.Unlock) }
+        var screen by remember { mutableStateOf(AppScreen.Splash) }
 
         when (screen) {
+            AppScreen.Splash -> SplashScreen(
+                // Auto-advance/timing logic is deferred; onFinished is wired
+                // once the splash flow logic is added.
+                onFinished = { screen = AppScreen.Unlock },
+            )
+
             AppScreen.Unlock -> UnlockScreen(
                 onUnlocked = { screen = AppScreen.Dashboard },
             )
